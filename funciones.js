@@ -37,3 +37,15 @@ export function mostrarPrendasAgotadas() {
     });
   }
 }
+
+// Función para reponer el inventario de una prenda específica
+export function reponerInventario(prendaId, cantidad) {
+  const prenda = inventario.find(item => item.id === prendaId);
+
+  if (prenda) {
+    prenda.cantidad += cantidad;
+    console.log(`Se han repuesto ${cantidad} unidades de ${prenda.nombre}. Nueva cantidad: ${prenda.cantidad}`);
+  } else {
+    console.log("Prenda no encontrada.");
+  }
+}
