@@ -49,3 +49,30 @@ export function reponerInventario(prendaId, cantidad) {
     console.log("Prenda no encontrada.");
   }
 }
+
+// Función para realizar un pedido
+export function hacerPedido(clienteId,prendaId, cantidad) {
+  const prenda = inventario.find(item => item.id === prendaId);
+
+  if (!prenda) {
+    console.log("Prenda no encontrada.");
+    return;
+  }
+
+  if (prenda.cantidad < cantidad) {
+    console.log(`No hay suficiente stock de ${prenda.nombre}.`);
+    return;
+  }
+
+  prenda.cantidad -= cantidad;
+
+  const nuevoPedido = {
+    clienteId,
+    prenda: prenda.nombre,
+    cantidad,
+    total: prenda.precio * cantidad
+  };
+
+  pedidos.push(nuevoPedido);
+  console.log(`Pedido realizado: ${cantidad}x ${prenda.nombre}. Total:$ ${nuevoPedido.total}`);
+}
