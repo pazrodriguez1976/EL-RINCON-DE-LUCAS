@@ -62,3 +62,17 @@ const prompt = promptSync();
   
           reponerInventario(idReponer, cantidadReponer);
           break;
+
+          case "7":
+          console.log("Saliendo del sistema...");
+          break;
+  
+        default:
+          console.clear();
+          console.log("Opción no válida. Inténtelo de nuevo.");
+      }
+    }
+  }
+  
+   // Ejecutar el menú
+  mostrarMenu();
