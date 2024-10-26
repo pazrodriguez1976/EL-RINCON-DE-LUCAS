@@ -35,3 +35,17 @@ const prompt = promptSync();
   
           agregarPrenda(nombre, tipo, talla, precio, cantidad);
           break;
+
+          case "3":
+          console.clear();
+          const clienteId = parseInt(prompt(`Ingrese el Id del cliente: `));
+          const prendaId = parseInt(prompt("Ingrese el Id de la prenda a pedir:"));
+          const cantidadPedido = parseInt(prompt("Ingrese la cantidad:"));
+  
+          hacerPedido(clienteId, prendaId, cantidadPedido);
+          break;
+  
+        case "4":
+          console.clear();
+          mostrarPedidos();
+          break;
