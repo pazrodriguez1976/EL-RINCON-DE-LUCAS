@@ -49,3 +49,16 @@ const prompt = promptSync();
           console.clear();
           mostrarPedidos();
           break;
+
+        case "5":
+          console.clear();
+          mostrarPrendasAgotadas();
+          break;
+  
+        case "6":
+          console.clear();
+          const idReponer = parseInt(prompt("Ingrese el ID de la prenda a reponer:"));
+          const cantidadReponer = parseInt(prompt("Ingrese la cantidad a reponer:"));
+  
+          reponerInventario(idReponer, cantidadReponer);
+          break;
