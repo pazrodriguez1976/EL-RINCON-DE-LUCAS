@@ -19,3 +19,19 @@ const prompt = promptSync();
   7. Salir
   Seleccione una opción:`
       );
+      switch (opcion) {
+        case "1":
+          console.clear();
+          mostrarInventario();
+          break;
+  
+        case "2":
+          console.clear();
+          const nombre = prompt("Ingrese el nombre de la prenda:");
+          const tipo = prompt("Ingrese el tipo de prenda (camiseta, pantalón, etc.):");
+          const talla = prompt("Ingrese la talla:");
+          const precio = parseFloat(prompt("Ingrese el precio:"));
+          const cantidad = parseInt(prompt("Ingrese la cantidad:"));
+  
+          agregarPrenda(nombre, tipo, talla, precio, cantidad);
+          break;
