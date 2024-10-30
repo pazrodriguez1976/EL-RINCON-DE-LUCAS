@@ -84,3 +84,14 @@ export function mostrarPedidos() {
     console.log(`Pedido ${index + 1}: ${pedido.cantidad}x ${pedido.prenda} - Total:$ ${pedido.total}`);
   });
 }
+export function modificarPrenda(nombre,nuevosDatos){
+  const prenda =inventario.find(prenda=>prenda.nombre===nombre);
+    if (prenda) {
+      Object.assign (prenda,nuevosDatos);//copia todas las propiedas de un objeto a otro
+      console.log (`Prenda "${nombre}" modificada.`);
+    
+    }
+     
+}
+
+

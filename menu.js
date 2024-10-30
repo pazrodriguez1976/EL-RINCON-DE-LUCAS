@@ -1,13 +1,13 @@
 import promptSync from 'prompt-sync';
 import {
-    agregarPrenda,mostrarInventario,hacerPedido,mostrarPedidos,mostrarPrendasAgotadas,reponerInventario } from "./funciones.js";
+    agregarPrenda,mostrarInventario,hacerPedido,mostrarPedidos,mostrarPrendasAgotadas,reponerInventario,modificarPrenda } from "./funciones.js";
 import { clientes } from "./datos.js";
 const prompt = promptSync();  
 
   function mostrarMenu() {
     let opcion = "";
   
-    while (opcion !== "7") {
+    while (opcion !== "8") {
       opcion = prompt(
         `--- Sistema de Tienda de Ropa ---
   1. Mostrar inventario
@@ -15,8 +15,9 @@ const prompt = promptSync();
   3. Realizar pedido
   4. Mostrar pedidos
   5. Mostrar prendas agotadas
-  6. Reponer inventario
-  7. Salir
+  6. Modificar prenda
+  7. Reponer Inventario
+  8. Salir
   Seleccione una opción:`
       );
       switch (opcion) {
@@ -36,7 +37,7 @@ const prompt = promptSync();
           agregarPrenda(nombre, tipo, talla, precio, cantidad);
           break;
 
-          case "3":
+        case "3":
           console.clear();
           const clienteId = parseInt(prompt(`Ingrese el Id del cliente: `));
           const prendaId = parseInt(prompt("Ingrese el Id de la prenda a pedir:"));
@@ -57,13 +58,23 @@ const prompt = promptSync();
   
         case "6":
           console.clear();
-          const idReponer = parseInt(prompt("Ingrese el ID de la prenda a reponer:"));
-          const cantidadReponer = parseInt(prompt("Ingrese la cantidad a reponer:"));
-  
-          reponerInventario(idReponer, cantidadReponer);
+          const nombreModificar = prompt("Ingrese el nombre de la prenda a modificar:");
+          const nuevosDatos = {};
+          nuevosDatos.tipo = prompt ("Ingrese el nuevo tipo:");
+          nuevosDatos.talla = prompt ("Ingrese la nueva talla:");
+          nuevosDatos.precio = parseFloat(prompt ("Ingrese el nuevo precio:"));
+          nuevosDatos.cantidad = parseInt( prompt ("Ingrese la nueva cantidad:"));
+          modificarPrenda(nombreModificar, nuevosDatos);
           break;
 
-          case "7":
+        case "7":
+          console.clear();
+          const idReponer = parseInt(prompt("Ingrese el ID de la prenda a reponer:"));
+          const cantidadReponer = parseInt(prompt("Ingrese la cantidad a reponer:"));
+    
+          reponerInventario(idReponer, cantidadReponer);
+            break;
+          case "8":
           console.log("Saliendo del sistema...");
           break;
   
